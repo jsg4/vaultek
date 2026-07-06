@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Vaultek Pacing — Lower Cross</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Geist:wght@400;500;650&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@500,600,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* ---- Lower Cross design tokens (v11 — aligned to the LC design system) */
+  /* brand: greens from the DS (#134823 green-ink, #0F2A1D green-dark) */
+  --pine:#123524; --pine-2:#134823; --pine-dark:#0F2A1D; --lime:#DAFF00;
+  --accent:#DAFF00; --on-accent:#123524;
+  /* surfaces + ink (light: brand cream pair, white cards) */
+  --page:#F8F6F4; --surface-1:#FFFFFF; --surface-2:#F0EBE6;
+  --ink-1:#121B16; --ink-2:#57635B; --ink-3:#7E8A81;
+  --border:#E2E0D7; --grid:#EBE9E1; --axis:#B9B6AA;
+  /* status — the ONLY red/amber/green on the page */
+  --st-good:#177A46; --st-warn:#A96A00; --st-serious:#B45309; --st-crit:#BF3B31;
+  --delta-good:#177A46; --delta-bad:#BF3B31;
+  --wash:rgba(18,53,36,0.05);
+  --wash-good:rgba(23,122,70,0.10); --wash-warn:rgba(169,106,0,0.11); --wash-bad:rgba(191,59,49,0.09);
+  /* platform series (charts): harmonized, not neon */
+  --s-meta:#33628F; --s-google:#B9862E; --s-tiktok:#3E8767; --s-other:#8A8FA0;
+  --seq-250:#8FB2CF;
+  /* bucket ramp (spend mix): tonal pine, one hue */
+  --bk-core:#123524; --bk-tof:#4E7A5D; --bk-brand:#8FAC94; --bk-other:#CBC7B8;
+  /* funnel ordinal ramp (validated light: white card): impressions -> purchases */
+  --fn-1:#9FB7A4; --fn-2:#7A9C84; --fn-3:#567F66; --fn-4:#2F5D44; --fn-5:#123524;
+  --tfun:#123524;  /* tornado funnel fill */
+  /* command bar (pine in both themes) */
+  --bar-ink:#F4F6F1; --bar-ink-2:rgba(244,246,241,0.66); --bar-line:rgba(244,246,241,0.16);
+  --bar-good:#6FD49A; --bar-warn:#E9B45B; --bar-crit:#F08D84;
+  /* shape + elevation + spacing (8pt) — DS-leaning radius, slightly deeper card shadow */
+  --r:18px; --r-s:9px;
+  --shadow:0 1px 2px rgba(11,16,21,0.04), 0 10px 32px rgba(11,16,21,0.06);
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+  /* type roles — Switzer is the true LC display face (Space Grotesk = DS fallback) */
+  --f-display:"Switzer","Space Grotesk",sans-serif;
+  --f-ui:"Geist",-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  --t-cap:12px; --t-sm:13px; --t-body:14.5px; --t-title:22px; --t-kpi:34px;
+}
+:root[data-theme="dark"] {
+  --page:#0D1411; --surface-1:#151D18; --surface-2:#1C2620;
+  --ink-1:#ECEFEA; --ink-2:#A9B4AC; --ink-3:#79857D;
+  --border:#28332B; --grid:#202B24; --axis:#4E5A51;
+  --st-good:#4CC080; --st-warn:#D9A03C; --st-serious:#E08A3C; --st-crit:#E36B60;
+  --delta-good:#4CC080; --delta-bad:#E36B60;
+  --wash:rgba(218,255,0,0.05);
+  --wash-good:rgba(76,192,128,0.13); --wash-warn:rgba(217,160,60,0.13); --wash-bad:rgba(227,107,96,0.13);
+  --s-meta:#5D8DBC; --s-google:#CFA14E; --s-tiktok:#5CAB85; --s-other:#9BA0B0;
+  --seq-250:#4F7DA8;
+  --bk-core:#C7E463; --bk-tof:#79A886; --bk-brand:#48705A; --bk-other:#3A453D;
+  --fn-1:#44604E; --fn-2:#5C7F63; --fn-3:#7B9F72; --fn-4:#9FC276; --fn-5:#C7E463;
+  --tfun:#C7E463;
+  --shadow:0 1px 2px rgba(0,0,0,0.4);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page:#0D1411; --surface-1:#151D18; --surface-2:#1C2620;
+    --ink-1:#ECEFEA; --ink-2:#A9B4AC; --ink-3:#79857D;
+    --border:#28332B; --grid:#202B24; --axis:#4E5A51;
+    --st-good:#4CC080; --st-warn:#D9A03C; --st-serious:#E08A3C; --st-crit:#E36B60;
+    --delta-good:#4CC080; --delta-bad:#E36B60;
+    --wash:rgba(218,255,0,0.05);
+    --wash-good:rgba(76,192,128,0.13); --wash-warn:rgba(217,160,60,0.13); --wash-bad:rgba(227,107,96,0.13);
+    --s-meta:#5D8DBC; --s-google:#CFA14E; --s-tiktok:#5CAB85; --s-other:#9BA0B0;
+    --seq-250:#4F7DA8;
+    --bk-core:#C7E463; --bk-tof:#79A886; --bk-brand:#48705A; --bk-other:#3A453D;
+    --fn-1:#44604E; --fn-2:#5C7F63; --fn-3:#7B9F72; --fn-4:#9FC276; --fn-5:#C7E463;
+    --tfun:#C7E463;
+    --shadow:0 1px 2px rgba(0,0,0,0.4);
+  }
+}
+
+/* ---- base ------------------------------------------------------------ */
+* { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--page); color:var(--ink-1); font:var(--t-body)/1.5 var(--f-ui); }
+.wrap { max-width:1240px; margin:0 auto; padding:var(--s4) var(--s4) var(--s7); }
+:focus-visible { outline:2px solid var(--pine); outline-offset:2px; border-radius:4px; }
+:root[data-theme="dark"] :focus-visible { outline-color:var(--lime); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) :focus-visible { outline-color:var(--lime); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition:none !important; animation:none !important; } }
+
+h1 { font-family:var(--f-display); font-size:20px; margin:0; font-weight:700; letter-spacing:-0.02em; }
+/* card section label — one label style everywhere */
+h2 { font-family:var(--f-ui); font-size:var(--t-cap); margin:0 0 var(--s3); font-weight:650; color:var(--ink-3); text-transform:uppercase; letter-spacing:0.08em; }
+.sub { color:var(--ink-2); font-size:var(--t-sm); }
+.muted { color:var(--ink-3); }
+
+.card { background:var(--surface-1); border:1px solid var(--border); border-radius:var(--r); padding:var(--s4) var(--s4); margin-bottom:var(--s4); box-shadow:var(--shadow); }
+
+/* Lower Cross stacked logotype (homepage mark reproduced typographically) */
+.lc-logo { font-family:var(--f-display); font-weight:700; font-size:21px; line-height:0.94;
+  letter-spacing:0.015em; text-transform:uppercase; color:var(--bar-ink); }
+.lc-logo.small { font-size:15px; }
+#lock .lc-logo { color:var(--pine); margin-bottom:var(--s3); font-size:24px; }
+:root[data-theme="dark"] #lock .lc-logo { color:var(--lime); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) #lock .lc-logo { color:var(--lime); } }
+
+/* ---- sidebar (signature: pine rail carries brand + nav) ---------------- */
+:root { --sbw:236px; --mbh:56px; }
+.sidebar { position:fixed; top:0; bottom:0; left:0; width:var(--sbw); z-index:40;
+  background:linear-gradient(180deg, var(--pine) 0%, var(--pine-dark) 100%);
+  color:var(--bar-ink); display:flex; flex-direction:column;
+  padding:var(--s5) var(--s4) var(--s4); overflow-y:auto; }
+.sb-brand .wordmark { color:var(--lime); }
+.sb-brand h1 { color:var(--bar-ink); font-size:18px; margin-top:var(--s2); }
+.sb-nav { display:flex; flex-direction:column; gap:2px; margin-top:var(--s5); }
+.sb-nav a { display:flex; align-items:center; gap:10px; padding:9px 10px;
+  border-radius:var(--r-s); font-size:15px; font-weight:500; color:var(--bar-ink-2);
+  text-decoration:none; border-left:3px solid transparent; }
+.sb-nav a .nic { display:flex; flex:none; opacity:0.7; }
+.sb-nav a:hover { color:var(--bar-ink); background:rgba(244,246,241,0.06); }
+.sb-nav a.on { color:var(--lime); border-left-color:var(--lime); font-weight:650; background:rgba(218,255,0,0.07); }
+.sb-nav a.on .nic { opacity:1; }
+.sb-foot { margin-top:auto; padding-top:var(--s4); border-top:1px solid var(--bar-line);
+  font-size:var(--t-sm); color:var(--bar-ink-2); display:grid; gap:6px; }
+.sb-foot b { color:var(--bar-ink); font-weight:600; }
+.sb-foot .attr { font-size:var(--t-cap); }
+.sb-foot .stale { color:var(--bar-crit); font-weight:650; }
+.sb-foot button.ghost { border-color:var(--bar-line); color:var(--bar-ink-2); justify-self:start; }
+.sb-foot button.ghost:hover { color:var(--bar-ink); border-color:var(--bar-ink-2); }
+.sidebar :focus-visible { outline-color:var(--lime); }
+:root.shell body { padding-left:var(--sbw); }
+
+/* mobile top bar + hamburger (hidden on desktop) */
+.mobilebar { display:none; position:fixed; top:0; left:0; right:0; height:var(--mbh); z-index:45;
+  background:var(--pine); color:var(--bar-ink); align-items:center; gap:var(--s2); padding:0 var(--s2); }
+.mobilebar .wordmark { color:var(--lime); }
+.mobilebar .mb-client { font-family:var(--f-display); font-weight:700; font-size:16px; }
+.hamb { width:44px; height:44px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:none; border:none; cursor:pointer; padding:0; }
+.hamb span { display:block; width:20px; height:2px; background:var(--lime); border-radius:2px; margin:2.5px 0;
+  transition:transform .3s cubic-bezier(0.34,1.56,0.64,1), opacity .2s ease; }
+:root.nav-open .hamb span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+:root.nav-open .hamb span:nth-child(2) { opacity:0; transform:scaleX(0.4); }
+:root.nav-open .hamb span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.scrim { position:fixed; inset:0; z-index:39; background:rgba(10,20,14,0.5); opacity:0;
+  pointer-events:none; transition:opacity .3s ease; }
+:root.nav-open .scrim { opacity:1; pointer-events:auto; }
+
+@media (max-width:1023px) {
+  :root.shell body { padding-left:0; padding-top:calc(var(--mbh) + var(--s2)); }
+  .mobilebar { display:flex; }
+  .sidebar { width:min(300px, 84vw); transform:translateX(-105%); box-shadow:0 0 44px rgba(0,0,0,0.35);
+    transition:transform .38s cubic-bezier(0.34,1.56,0.64,1); padding-top:calc(var(--mbh) + var(--s3)); }
+  /* the persistent top bar already carries the brand — no duplicate in the drawer */
+  .sidebar .sb-brand { display:none; }
+  .sb-nav { margin-top:0; }
+  :root.nav-open .sidebar { transform:none; }
+  /* whimsy: nav items spring in one after another as the drawer opens */
+  .sb-nav a { opacity:0; transform:translateX(-14px);
+    transition:opacity .22s ease, transform .32s cubic-bezier(0.34,1.56,0.64,1); }
+  :root.nav-open .sb-nav a { opacity:1; transform:none; transition-delay:calc(40ms * var(--i, 0)); }
+  :root.nav-open, :root.nav-open body { overflow:hidden; }
+}
+
+/* verdict strip — cockpit, pine strip at the top of the content column */
+.topstrip { background:var(--pine); border-radius:var(--r); padding:var(--s3) var(--s4); margin-bottom:var(--s4); box-shadow:var(--shadow); }
+.verdict { display:flex; align-items:baseline; gap:var(--s2); font-size:var(--t-body); color:var(--bar-ink); flex-wrap:wrap; }
+.verdict .vdot { width:9px; height:9px; border-radius:50%; flex:none; align-self:center; }
+.verdict.v-good .vdot { background:var(--bar-good); }
+.verdict.v-warn .vdot { background:var(--bar-warn); }
+.verdict.v-bad .vdot { background:var(--bar-crit); }
+.verdict .vh { font-weight:650; }
+.verdict.v-bad .vh { color:var(--bar-crit); }
+.verdict.v-warn .vh { color:var(--bar-warn); }
+.verdict.v-good .vh { color:var(--bar-good); }
+.verdict .vs { color:var(--bar-ink-2); }
+.verdict .vs b { color:var(--bar-ink); font-weight:600; }
+.verdict a { color:var(--lime); text-decoration:none; font-weight:600; }
+.verdict a:hover { text-decoration:underline; }
+
+/* page title */
+.pagehead { margin:var(--s2) 0 var(--s3); display:flex; align-items:baseline; gap:var(--s3); flex-wrap:wrap; }
+.pagehead .ptitle { font-family:var(--f-display); font-size:var(--t-title); font-weight:700; letter-spacing:-0.02em; }
+.pagehead .pctx { margin-left:auto; font-size:var(--t-sm); color:var(--ink-3); font-variant-numeric:tabular-nums; }
+
+/* legacy header pieces (lock screen wordmark) */
+.wordmark { font-family:var(--f-display); font-size:10px; letter-spacing:0.22em; color:var(--ink-3); text-transform:uppercase; font-weight:700; }
+.chip { display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border:1px solid var(--border); border-radius:100px; font-size:var(--t-sm); color:var(--ink-2); background:var(--surface-1); }
+.chip b { color:var(--ink-1); }
+button.ghost { background:none; border:1px solid var(--border); border-radius:var(--r-s); color:var(--ink-2); padding:6px 12px; font:inherit; font-size:var(--t-sm); cursor:pointer; }
+button.ghost:hover { color:var(--ink-1); }
+
+/* ---- decide queues ---------------------------------------------------- */
+.decide { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:var(--s3); }
+.dcol { border:1px solid var(--border); border-top:2px solid var(--border); border-radius:var(--r-s); padding:var(--s3) var(--s4); background:var(--surface-1); }
+.dcol h3 { margin:0 0 var(--s2); font-size:var(--t-cap); letter-spacing:0.08em; display:flex; align-items:center; gap:6px; text-transform:uppercase; font-weight:650; }
+.dcol h3 .dot { width:8px; height:8px; border-radius:50%; }
+.d-now { border-top-color:var(--st-crit); } .d-now h3 { color:var(--st-crit); } .d-now .dot { background:var(--st-crit); }
+.d-scale { border-top-color:var(--st-good); } .d-scale h3 { color:var(--st-good); } .d-scale .dot { background:var(--st-good); }
+.d-watch { border-top-color:var(--st-warn); } .d-watch h3 { color:var(--st-warn); } .d-watch .dot { background:var(--st-warn); }
+.ditem { padding:var(--s2) 0 10px; border-top:1px solid var(--grid); font-size:14px; }
+.ditem:first-of-type { border-top:none; }
+.ditem .w { font-weight:400; color:var(--ink-2); }
+.ditem .w .qname { font-weight:650; color:var(--ink-1); }
+.ditem .a { color:var(--ink-2); margin-top:3px; font-size:var(--t-sm); }
+.ditem .a::before { content:"→ "; color:var(--ink-3); }
+.dempty { color:var(--ink-3); font-size:14px; padding:var(--s2) 0; }
+.dkids { margin-top:6px; border-left:2px solid var(--grid); padding-left:10px; }
+.dkid { display:flex; align-items:baseline; gap:6px; font-size:var(--t-sm); color:var(--ink-2); padding:2px 0; }
+.dkid .kdot { width:6px; height:6px; border-radius:50%; flex:none; align-self:center; }
+.dkid.k-pause .kdot { background:var(--st-crit); }
+.dkid.k-keep .kdot { background:var(--st-good); }
+.dkid.k-best .kdot { background:var(--st-warn); }
+.dkid .knm { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:60%; }
+.dkid .kv { margin-left:auto; font-variant-numeric:tabular-nums; white-space:nowrap; color:var(--ink-1); }
+
+/* ---- Performance Summary strip: KPIs in one card, divided cells (ref) --- */
+.tiles { display:flex; flex-wrap:wrap; background:var(--surface-1); border:1px solid var(--border);
+  border-radius:var(--r); box-shadow:var(--shadow); margin-bottom:var(--s4); overflow:hidden; }
+.tile { position:relative; flex:1 1 0; min-width:164px; padding:var(--s4) var(--s4) 14px calc(var(--s4) + 6px);
+  border-left:1px solid var(--border); }
+.tile:first-child { border-left:none; }
+/* left status accent bar (the reference's colored tick) */
+.tile::before { content:""; position:absolute; left:0; top:var(--s4); bottom:14px; width:3px;
+  border-radius:0 3px 3px 0; background:var(--ink-3); opacity:0.3; }
+.tile.st-good::before { background:var(--st-good); opacity:1; }
+.tile.st-warn::before { background:var(--st-warn); opacity:1; }
+.tile.st-bad::before  { background:var(--st-crit); opacity:1; }
+.tile-top { display:flex; align-items:flex-start; gap:var(--s2); margin-bottom:6px; min-height:2.7em; }
+.tile .lbl { font-size:var(--t-cap); color:var(--ink-3); text-transform:uppercase; letter-spacing:0.07em;
+  font-weight:650; line-height:1.35; flex:1; }
+.tile .val { font-family:var(--f-display); font-size:29px; font-weight:700; letter-spacing:-0.02em;
+  line-height:1.05; font-variant-numeric:tabular-nums; }
+.tile .delta { display:inline-flex; align-items:center; gap:3px; padding:2px 7px; border-radius:100px;
+  font-weight:650; font-size:var(--t-cap); background:var(--surface-2); color:var(--ink-2); white-space:nowrap; flex:none; }
+.tile .delta.up { background:var(--wash-good); color:var(--delta-good); }
+.tile .delta.down { background:var(--wash-bad); color:var(--delta-bad); }
+.tile .basis { font-size:var(--t-cap); color:var(--ink-3); margin-top:3px; line-height:1.3; }
+.tile svg { display:block; margin-top:var(--s2); width:100%; }
+@media (max-width:760px) { .tile { flex:1 1 44%; min-width:44%; } .tile:nth-child(odd) { border-left:none; } }
+.sdot { display:none; }
+.goalbar { position:relative; height:4px; border-radius:100px; background:var(--grid); margin-top:var(--s2); overflow:visible; }
+.goalbar > i { display:block; height:100%; border-radius:100px; }
+.goalbar .tick { position:absolute; top:-3px; width:2px; height:10px; background:var(--axis); }
+
+/* ---- routine ---------------------------------------------------------- */
+.routine { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:var(--s4); }
+.routine ol { margin:6px 0 0; padding-left:20px; font-size:14px; color:var(--ink-2); }
+.routine li { margin:4px 0; }
+.routine b { color:var(--ink-1); }
+
+/* ---- charts ------------------------------------------------------------ */
+.chartbox { position:relative; }
+.crosshair { position:absolute; top:0; width:1px; background:var(--axis); pointer-events:none; display:none; }
+.tooltip { position:absolute; pointer-events:none; display:none; z-index:5; background:var(--surface-1); border:1px solid var(--border); border-radius:var(--r-s); padding:var(--s2) 10px; font-size:var(--t-sm); box-shadow:var(--shadow); min-width:150px; }
+.tooltip .tt-date { color:var(--ink-3); margin-bottom:4px; }
+.tooltip .row { display:flex; align-items:center; gap:6px; margin:2px 0; }
+.tooltip .key { width:12px; height:2px; border-radius:1px; flex:none; }
+.tooltip .v { font-weight:650; margin-left:auto; padding-left:12px; font-variant-numeric:tabular-nums; }
+.legend { display:flex; gap:14px; flex-wrap:wrap; font-size:var(--t-sm); color:var(--ink-2); margin-top:var(--s2); }
+.legend .key { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:-1px; }
+.legend .keyline { display:inline-block; width:14px; height:2px; border-radius:1px; margin-right:5px; vertical-align:3px; }
+.legend .keyline.thick { height:3px; }
+
+/* ---- tables ------------------------------------------------------------ */
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th, td { text-align:right; padding:9px 10px; border-bottom:1px solid var(--grid); white-space:nowrap; }
+th:first-child, td:first-child { text-align:left; }
+th { color:var(--ink-3); font-weight:500; font-size:var(--t-cap); text-transform:uppercase; letter-spacing:0.05em; cursor:pointer; user-select:none; position:sticky; top:0; background:var(--surface-1); z-index:1; }
+th.sorted { color:var(--ink-1); font-weight:650; }
+td { font-variant-numeric:tabular-nums; }
+td.name { max-width:340px; overflow:hidden; text-overflow:ellipsis; text-align:left; }
+td .pdot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+tr:hover td { background:var(--wash); }
+td.num { font-variant-numeric:tabular-nums; }
+td.guide { text-align:left; color:var(--ink-2); font-size:var(--t-sm); white-space:normal; min-width:150px; }
+.badge { display:inline-flex; align-items:center; gap:5px; font-size:var(--t-cap); padding:2px 8px; border-radius:100px; border:1px solid var(--border); color:var(--ink-2); font-weight:600; }
+.badge .dot { width:6px; height:6px; border-radius:50%; }
+.b-scale { color:var(--st-good); border-color:var(--st-good); } .b-scale .dot { background:var(--st-good); }
+.b-goal .dot { background:var(--st-good); }
+.b-watch .dot { background:var(--st-warn); }
+.b-fix { color:var(--st-crit); border-color:var(--st-crit); } .b-fix .dot { background:var(--st-crit); }
+.b-na .dot { background:var(--ink-3); }
+.roascell { font-weight:650; }
+.tscroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.chg-hidden { display:none !important; }
+.chg-more { background:none; border:none; padding:var(--s2) 0 0; font:inherit; font-size:var(--t-sm); font-weight:650; color:var(--ink-1); cursor:pointer; }
+
+/* ---- section divider --------------------------------------------------- */
+.section-h { display:flex; align-items:baseline; gap:10px; margin:var(--s6) 0 var(--s3); }
+.section-h h2 { font-family:var(--f-display); font-size:15px; margin:0; letter-spacing:-0.01em; color:var(--ink-1); text-transform:none; font-weight:700; }
+.section-h .sub { font-size:var(--t-sm); }
+
+/* ---- insights lists ----------------------------------------------------- */
+.insights { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:var(--s3); }
+.insights ul, ul.insights { margin:0; padding-left:0; list-style:none; }
+.insights li, ul.insights li { padding:9px 0 9px 20px; position:relative; border-bottom:1px solid var(--grid); font-size:14px; }
+.insights li:last-child, ul.insights li:last-child { border-bottom:none; }
+.insights li::before, ul.insights li::before { content:""; position:absolute; left:2px; top:14px; width:7px; height:7px; border-radius:50%; }
+li.sev-good::before { background:var(--st-good); }
+li.sev-warn::before { background:var(--st-warn); }
+li.sev-bad::before { background:var(--st-crit); }
+li.sev-info::before { background:var(--ink-3); }
+.ctx li::before { background:var(--ink-3); }
+.ctx .d { color:var(--ink-3); font-size:var(--t-cap); margin-right:6px; }
+details summary { cursor:pointer; color:var(--ink-2); font-size:14px; font-weight:600; padding:4px 0; }
+footer { color:var(--ink-3); font-size:var(--t-sm); margin-top:var(--s5); }
+footer li { margin:3px 0; }
+
+/* ---- widgets ------------------------------------------------------------ */
+.wrow { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:var(--s3); margin-bottom:var(--s4); }
+.widget { background:var(--surface-1); border:1px solid var(--border); border-radius:var(--r); padding:var(--s4); box-shadow:var(--shadow); }
+.widget h3 { margin:0 0 var(--s3); font-family:var(--f-ui); font-size:var(--t-cap); letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-3); font-weight:650; }
+.mixbar { display:flex; height:10px; border-radius:6px; overflow:hidden; gap:2px; background:var(--grid); }
+.mixbar > div { height:100%; }
+.mixlegend { margin-top:var(--s3); }
+.mixlegend .row { display:flex; align-items:center; gap:8px; font-size:var(--t-sm); padding:3px 0; color:var(--ink-2); }
+.mixlegend .sw { width:9px; height:9px; border-radius:3px; flex:none; }
+.mixlegend .v { margin-left:auto; font-variant-numeric:tabular-nums; color:var(--ink-1); font-weight:600; }
+/* goal track: 30 daily bars vs goal */
+.gtrack { display:flex; align-items:flex-end; gap:2px; height:44px; margin-top:var(--s1); position:relative; }
+.gtrack .gline { position:absolute; left:0; right:0; border-top:1.5px dashed var(--axis); pointer-events:none; }
+.gtrack i { flex:1; min-width:2px; border-radius:2px 2px 0 0; background:var(--grid); }
+.gtrack i.above { background:var(--st-good); }
+.gtrack i.below { background:var(--grid); }
+.gtrack i.below.recent { background:color-mix(in srgb, var(--st-warn) 35%, transparent); }
+.gtrack-cap { font-size:var(--t-sm); color:var(--ink-2); margin-top:var(--s2); }
+.gtrack-cap b { color:var(--ink-1); font-variant-numeric:tabular-nums; }
+.callout { display:flex; gap:9px; padding:var(--s2) 0; border-bottom:1px solid var(--grid); font-size:14px; align-items:baseline; }
+.callout:last-child { border-bottom:none; }
+.callout .cdot { width:7px; height:7px; border-radius:50%; flex:none; align-self:center; }
+
+/* ---- funnel (v11): stage bars + between-stage conversion rates ---------- */
+.funnel-head { display:flex; align-items:center; gap:var(--s3); flex-wrap:wrap; margin-bottom:var(--s3); }
+.funnel-head h2 { margin:0; }
+.funnel-head .seg { margin-left:auto; }
+/* tornado funnel: labels left, smooth mirrored shape center, transition chips right */
+.tfun { display:grid; grid-template-columns:104px minmax(0,1fr) 150px; gap:0 var(--s3); align-items:start; }
+.tfun svg { display:block; width:100%; }
+.tfun .tlabs .tl { height:var(--tfrow); display:flex; flex-direction:column; justify-content:center; font-size:var(--t-cap); color:var(--ink-2); line-height:1.25; }
+.tfun .tlabs .tl b { color:var(--ink-1); font-weight:650; font-size:17px; font-variant-numeric:tabular-nums; }
+.tfun .tdrops { padding-top:calc(var(--tfrow) / 2); }
+.tfun .tdrops .td0 { height:var(--tfrow); display:flex; flex-direction:column; justify-content:center; gap:2px; font-size:var(--t-cap); color:var(--ink-3); }
+.tfun .tdrops .td0 b { color:var(--ink-1); font-weight:650; font-size:var(--t-sm); font-variant-numeric:tabular-nums; }
+.tfun .tdrops .td0.leak b { color:var(--st-crit); }
+.rchip { display:inline-block; font-size:var(--t-cap); font-weight:650; font-variant-numeric:tabular-nums; padding:1px 7px; border-radius:99px; white-space:nowrap; align-self:flex-start; }
+.rchip.up { color:var(--delta-good); background:var(--wash-good); }
+.rchip.down { color:var(--delta-bad); background:var(--wash-bad); }
+.rchip.flat { color:var(--ink-3); background:var(--wash); }
+.fsub { font-size:var(--t-cap); color:var(--ink-3); margin-top:var(--s3); }
+
+/* ---- v12 vertical purchase funnel -------------------------------------- */
+.funnelcard .chead .srcpill { float:right; margin-left:var(--s3); }
+.srcpill { display:inline-block; font-size:var(--t-cap); font-weight:600; color:var(--ink-3);
+  border:1px solid var(--border); border-radius:99px; padding:2px 10px; white-space:nowrap; }
+.vfun { display:grid; grid-template-columns:118px minmax(0,240px) 176px; gap:0 var(--s3); align-items:start;
+  margin:var(--s2) auto 0; max-width:600px; justify-content:center; }
+.vfun svg { display:block; width:100%; }
+.vfun .vlabs .vl { height:var(--vfrow); display:flex; flex-direction:column; justify-content:center;
+  font-size:var(--t-cap); color:var(--ink-2); line-height:1.2; }
+.vfun .vlabs .vl b { color:var(--ink-1); font-weight:700; font-size:20px; font-variant-numeric:tabular-nums;
+  font-family:var(--f-display); letter-spacing:-0.01em; }
+.vfun .vdrops { padding-top:calc(var(--vfrow) / 2); }
+.vfun .vdrops .vd0 { height:var(--vfrow); display:flex; flex-direction:column; justify-content:center; gap:3px;
+  font-size:var(--t-cap); color:var(--ink-3); line-height:1.2; }
+.vfun .vdrops .vd0 b { color:var(--ink-1); font-weight:650; font-size:var(--t-sm); font-variant-numeric:tabular-nums; }
+.vfun .vdrops .vd0.leak b { color:var(--st-crit); }
+@media (max-width:520px) {
+  .vfun { grid-template-columns:92px minmax(0,1fr) 132px; }
+  .vfun .vlabs .vl b { font-size:17px; }
+}
+.funnelseg { font-size:var(--t-cap); }
+.funnelcard .vfun-body { clear:both; }
+.fscope { text-align:center; font-size:var(--t-cap); color:var(--ink-3); margin-top:var(--s3);
+  border:1px solid var(--border); border-radius:99px; padding:3px 12px; display:inline-block;
+  position:relative; left:50%; transform:translateX(-50%); }
+.dgctx { margin-top:var(--s3); padding:var(--s3); border-radius:var(--r-s); background:var(--wash);
+  border:1px solid var(--border); font-size:var(--t-sm); color:var(--ink-2); line-height:1.45; }
+.dgctx b { color:var(--ink-1); font-weight:650; }
+
+/* ---- global Demand Gen toggle: sidebar control + mode banner + tile chip ---- */
+.sb-ctl { display:grid; gap:6px; }
+.sb-ctl-l { font-size:var(--t-cap); letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--bar-ink-2); font-weight:650; }
+.sb-seg { background:transparent; border-color:var(--bar-line); }
+.sb-seg button { color:var(--bar-ink-2); border-right-color:var(--bar-line); padding:6px 12px; font-size:var(--t-sm); }
+.sb-seg button:hover { color:var(--bar-ink); }
+.sb-seg button[aria-pressed="true"] { color:var(--on-accent); background:var(--lime); font-weight:650; }
+/* mode banner — shown only when DG is folded in */
+.dgmode { display:flex; align-items:center; gap:8px; margin:0 0 var(--s3);
+  padding:8px 12px; border-radius:var(--r-s); background:var(--wash);
+  border:1px solid var(--border); font-size:var(--t-sm); color:var(--ink-2); line-height:1.4; }
+.dgmode b { color:var(--ink-1); font-weight:650; }
+.dgmode-dot { width:8px; height:8px; border-radius:50%; background:var(--lime); flex:none;
+  outline:1px solid rgba(11,16,21,0.12); }
+/* "incl DG" chip on the headline ROAS tile */
+.dgchip { display:inline-flex; align-items:center; font-size:var(--t-cap); font-weight:650;
+  padding:1px 7px; border-radius:100px; background:var(--surface-2); color:var(--ink-2);
+  border:1px solid var(--border); text-transform:uppercase; letter-spacing:0.05em;
+  white-space:nowrap; flex:none; align-self:flex-start; }
+
+/* cockpit hero row: trends beside funnel, reference-style */
+.cockrow { display:grid; grid-template-columns:minmax(0,3fr) minmax(0,2fr); gap:var(--s4); margin-bottom:var(--s4); align-items:stretch; }
+.cockrow > .card { margin-bottom:0; }
+@media (max-width: 980px) { .cockrow { grid-template-columns:1fr; } }
+
+/* card head: sentence-case title + quiet subtitle (major cards) */
+.chead { margin-bottom:var(--s3); }
+.chead .ct { font-family:var(--f-display); font-size:16px; font-weight:650; letter-spacing:-0.01em; color:var(--ink-1); }
+.chead .cs { font-size:var(--t-sm); color:var(--ink-3); margin-top:2px; }
+.chead .seg { float:right; margin-left:var(--s3); }
+
+/* stat row under the trend chart */
+.chstats { display:grid; grid-template-columns:repeat(auto-fit,minmax(118px,1fr)); gap:var(--s3); border-top:1px solid var(--grid); margin-top:var(--s3); padding-top:var(--s3); }
+.chstats .cs-l { font-size:var(--t-cap); color:var(--ink-3); font-weight:650; text-transform:uppercase; letter-spacing:0.06em; }
+.chstats .cs-v { font-size:19px; font-weight:650; color:var(--ink-1); margin-top:2px; }
+.chstats .cs-v .delta { display:inline-block; margin-left:8px; }
+
+/* donut (spend mix) */
+.donutwrap { display:flex; gap:var(--s4); align-items:center; }
+.donutwrap .mixlegend { flex:1; margin-top:0; }
+
+/* tile sparkline */
+.tile .spark { margin-top:var(--s2); }
+.tile .spark svg { display:block; width:100%; height:34px; }
+
+@media (max-width: 560px) {
+  .tfun { grid-template-columns:88px minmax(0,1fr) 118px; }
+  .tfun .tlabs .tl b { font-size:15px; }
+}
+
+/* ---- data health (v11) -------------------------------------------------- */
+.dhstrip { display:flex; align-items:center; gap:var(--s3); flex-wrap:wrap; font-size:var(--t-sm); color:var(--ink-2); }
+.dhstrip .dh-label { font-size:var(--t-cap); letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-3); font-weight:650; }
+.dhstrip .dh-src { display:inline-flex; align-items:center; gap:6px; }
+.dhstrip .dh-dot { width:8px; height:8px; border-radius:50%; flex:none; }
+.dhstrip a { color:inherit; margin-left:auto; font-size:var(--t-cap); }
+.integ table { width:100%; border-collapse:collapse; font-size:var(--t-sm); }
+.integ th { text-align:left; font-size:var(--t-cap); color:var(--ink-3); font-weight:650; text-transform:uppercase; letter-spacing:0.06em; padding:6px 10px 6px 0; border-bottom:1px solid var(--border); }
+.integ th, .integ td { text-align:left; }
+.integ td { padding:8px 10px 8px 0; border-bottom:1px solid var(--grid); vertical-align:top; color:var(--ink-2); font-variant-numeric:tabular-nums; }
+.integ td:first-child { color:var(--ink-1); font-weight:600; white-space:nowrap; }
+.integ .ichip { display:inline-block; font-size:var(--t-cap); font-weight:650; padding:1px 8px; border-radius:99px; text-transform:uppercase; letter-spacing:0.04em; }
+.integ .ichip.ok { color:var(--st-good); background:var(--wash-good); }
+.integ .ichip.cache { color:var(--st-warn); background:var(--wash-warn); }
+.integ .ichip.bad { color:var(--st-crit); background:var(--wash-bad); }
+.divrow { margin:var(--s2) 0 var(--s3); }
+.divrow .dl { display:flex; justify-content:space-between; font-size:var(--t-sm); color:var(--ink-2); margin-bottom:3px; }
+.divrow .dl b { color:var(--ink-1); font-variant-numeric:tabular-nums; }
+.divrow .dbar { height:12px; border-radius:0 3px 3px 0; min-width:3px; margin-bottom:3px; }
+.divrow .dbar.claim { background:var(--wash); border:1px dashed var(--ink-3); }
+.divrow .dbar.nb { background:var(--pine); }
+:root[data-theme="dark"] .divrow .dbar.nb { background:var(--bk-core); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .divrow .dbar.nb { background:var(--bk-core); } }
+
+/* ---- brand eyebrow (v11) ------------------------------------------------- */
+.eyebrow { font-size:11px; letter-spacing:0.09em; text-transform:uppercase; color:var(--ink-3); font-weight:650; display:flex; align-items:center; gap:8px; }
+.eyebrow::before { content:""; width:14px; height:3px; background:var(--lime); border-radius:2px;
+  outline:1px solid rgba(11,16,21,0.08); }
+.mult-chip { display:inline-block; padding:1px 8px; border-radius:100px; font-weight:650; font-size:var(--t-sm); background:var(--surface-2); font-variant-numeric:tabular-nums; }
+
+/* ---- takeaways ----------------------------------------------------------- */
+.takeaway { display:flex; gap:8px; align-items:baseline; font-size:14px; font-weight:600; color:var(--ink-1); margin:0 0 var(--s3); }
+.takeaway::before { content:""; width:7px; height:7px; border-radius:50%; flex:none; align-self:center; background:var(--ink-3); }
+.takeaway.tk-good::before { background:var(--st-good); }
+.takeaway.tk-warn::before { background:var(--st-warn); }
+.takeaway.tk-bad::before { background:var(--st-crit); }
+.roasbar { display:inline-block; width:44px; height:4px; border-radius:100px; background:var(--grid); margin-left:7px; vertical-align:2px; overflow:hidden; }
+.roasbar > i { display:block; height:100%; border-radius:100px; }
+
+/* ---- cockpit nav cards ----------------------------------------------------- */
+.navcards { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:var(--s3); margin-bottom:var(--s4); }
+.ncard { display:block; background:var(--surface-1); border:1px solid var(--border); border-radius:var(--r); padding:var(--s4); text-decoration:none; color:var(--ink-1); transition:border-color .15s; box-shadow:var(--shadow); }
+.ncard:hover { border-color:var(--pine); }
+:root[data-theme="dark"] .ncard:hover { border-color:var(--lime); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ncard:hover { border-color:var(--lime); } }
+.nc-title { font-family:var(--f-display); font-weight:700; font-size:15px; letter-spacing:-0.01em; }
+.nc-teaser { color:var(--ink-3); font-size:var(--t-sm); margin-top:var(--s1); }
+.morelink { display:block; margin-top:var(--s2); font-size:var(--t-sm); font-weight:650; color:inherit; }
+
+/* ---- testing monitor ----------------------------------------------------- */
+.tchip { display:inline-flex; align-items:center; gap:5px; font-size:var(--t-cap); padding:2px 9px; border-radius:100px; border:1px solid var(--border); font-weight:650; text-transform:uppercase; letter-spacing:0.06em; white-space:nowrap; }
+.tchip .dot { width:6px; height:6px; border-radius:50%; }
+.t-graduate { color:var(--st-good); border-color:var(--st-good); } .t-graduate .dot { background:var(--st-good); }
+.t-kill { color:var(--st-crit); border-color:var(--st-crit); } .t-kill .dot { background:var(--st-crit); }
+.t-final_stretch { color:var(--st-warn); } .t-final_stretch .dot { background:var(--st-warn); }
+.t-early_signal { color:var(--st-good); } .t-early_signal .dot { background:var(--st-good); }
+.t-in_test { color:var(--ink-2); } .t-in_test .dot { background:var(--ink-3); }
+.meter { width:120px; height:6px; border-radius:100px; background:var(--grid); overflow:hidden; }
+.meter > div { height:100%; border-radius:100px; }
+td.action { text-align:left; white-space:normal; min-width:220px; max-width:330px; color:var(--ink-2); font-size:var(--t-sm); }
+
+/* ---- creative intelligence ----------------------------------------------- */
+.vchip { display:inline-flex; align-items:center; gap:4px; font-size:var(--t-cap); padding:1px 8px; border-radius:100px; border:1px solid var(--border); font-weight:650; text-transform:uppercase; letter-spacing:0.06em; }
+.vchip.lean_in { color:var(--st-good); border-color:var(--st-good); }
+.vchip.cut { color:var(--st-crit); border-color:var(--st-crit); }
+.vchip.iterate { color:var(--ink-2); }
+.vchip.low_data { color:var(--ink-3); }
+.ci-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:var(--s4); }
+.ci-lists { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:var(--s3); margin-top:var(--s4); }
+.comp-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:var(--s3); }
+.comp-card { border:1px solid var(--border); border-radius:var(--r-s); padding:var(--s3) var(--s4); }
+.comp-card h4 { margin:0 0 2px; font-family:var(--f-display); font-size:14px; }
+.comp-card .cat { color:var(--ink-3); font-size:var(--t-cap); margin-bottom:6px; }
+.comp-card .angles { display:flex; flex-wrap:wrap; gap:4px; margin:6px 0; }
+.comp-card .angles span { font-size:var(--t-cap); border:1px solid var(--border); border-radius:100px; padding:1px 8px; color:var(--ink-2); }
+.comp-card .mirror { font-size:var(--t-sm); color:var(--ink-1); margin-top:6px; }
+.comp-card .mirror::before { content:"Mirror: "; font-weight:650; color:var(--ink-2); }
+.comp-thumbs { display:flex; gap:6px; margin-top:var(--s2); }
+.comp-thumbs img { height:74px; border-radius:6px; border:1px solid var(--border); object-fit:cover; }
+.comp-proven { font-size:var(--t-cap); color:var(--ink-3); margin-top:4px; }
+.gapbox { border:1px solid var(--border); border-left:3px solid var(--pine); border-radius:var(--r-s); padding:var(--s3) var(--s4); margin-top:var(--s4); }
+:root[data-theme="dark"] .gapbox { border-left-color:var(--lime); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .gapbox { border-left-color:var(--lime); } }
+.gapbox ul { margin:4px 0 0; padding-left:18px; font-size:14px; color:var(--ink-2); }
+.gapbox li { margin:5px 0; }
+.creative { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:var(--s4); }
+
+/* ---- filters ------------------------------------------------------------- */
+.filters { display:flex; flex-wrap:wrap; gap:var(--s2); align-items:center; margin-bottom:var(--s3); }
+.seg { display:inline-flex; border:1px solid var(--border); border-radius:var(--r-s); overflow:hidden; background:var(--surface-1); }
+.seg button { background:none; border:none; padding:7px 14px; font:inherit; font-size:14px; color:var(--ink-2); cursor:pointer; border-right:1px solid var(--border); }
+.seg button:last-child { border-right:none; }
+.seg button[aria-pressed="true"] { color:var(--ink-1); font-weight:650; background:var(--surface-2); }
+input.search { background:var(--surface-1); color:var(--ink-1); border:1px solid var(--border); border-radius:var(--r-s); padding:7px 12px; font:inherit; font-size:14px; width:220px; }
+.maturity-note { font-size:var(--t-sm); color:var(--ink-3); margin-top:var(--s1); }
+
+/* ---- unlock ---------------------------------------------------------------- */
+#lock { max-width:360px; width:calc(100% - 32px); margin:18vh auto; text-align:center; }
+#lock .wordmark { color:var(--pine); }
+:root[data-theme="dark"] #lock .wordmark { color:var(--lime); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) #lock .wordmark { color:var(--lime); } }
+#lock input { width:100%; padding:10px 12px; font:inherit; border:1px solid var(--border); border-radius:var(--r-s); background:var(--surface-1); color:var(--ink-1); margin:var(--s4) 0 10px; }
+#lock button { width:100%; padding:11px; font:inherit; font-weight:650; border:none; border-radius:var(--r-s); background:var(--pine); color:var(--lime); cursor:pointer; }
+#lock .err { color:var(--st-crit); font-size:14px; min-height:18px; }
+#app { display:none; }
+
+/* ---- mobile ------------------------------------------------------------------ */
+@media (max-width:720px){
+  .wrap { padding:var(--s3) max(12px, env(safe-area-inset-right)) var(--s7) max(12px, env(safe-area-inset-left)); }
+  input.search, #lock input { font-size:16px; }
+  .card { padding:var(--s3); border-radius:var(--r-s); }
+  .pagehead { margin:var(--s4) 0 var(--s2); }
+  .tiles { grid-template-columns:repeat(2, 1fr); gap:var(--s2); }
+  .tile { padding:var(--s3); }
+  .tile .val { font-size:26px; }
+  .tile svg { max-width:100%; }
+  td.name { max-width:160px; }
+  th, td { padding:8px 8px; font-size:var(--t-sm); }
+  .seg button { padding:6px 10px; }
+  .tscroll th:first-child, .tscroll td:first-child { position:sticky; left:0; background:var(--surface-1); z-index:2; }
+  .tscroll tr:hover td { background:var(--surface-1); }
+  .insights { grid-template-columns:1fr; }
+}
+</style>
+</head>
+
+<body>
+<style>
+/* ---- guardrail hero cards (Vaultek) ---- */
+.gcard { display:flex; flex-direction:column; }
+.gcard .eyebrow { margin-bottom:var(--s2); }
+.gcard .g-lbl { font-size:var(--t-sm); color:var(--ink-2); font-weight:500; }
+.gcard .g-val { font-family:var(--f-display); font-size:46px; font-weight:700; letter-spacing:-0.025em;
+  line-height:1; margin:8px 0 3px; font-variant-numeric:tabular-nums; }
+.gcard.st-good .g-val { color:var(--st-good); }
+.gcard.st-warn .g-val { color:var(--st-warn); }
+.gcard.st-bad .g-val { color:var(--st-crit); }
+.gcard .g-bound { font-size:var(--t-cap); color:var(--ink-3); font-weight:600; letter-spacing:0.02em; }
+.ggauge { position:relative; margin-top:var(--s4); padding-bottom:20px; }
+.ggbar { position:relative; height:8px; border-radius:100px; background:var(--grid); overflow:visible; }
+.ggbar > i { display:block; height:100%; border-radius:100px; transition:width .4s ease; }
+.gtick { position:absolute; top:-4px; width:2px; height:16px; background:var(--ink-1); border-radius:2px; }
+.gticklab { position:absolute; top:16px; transform:translateX(-50%); white-space:nowrap;
+  font-size:var(--t-cap); color:var(--ink-3); font-weight:600; }
+.gchips { display:flex; gap:var(--s2); margin-top:auto; padding-top:var(--s4); flex-wrap:wrap; }
+.gchip { display:inline-flex; flex-direction:column; border:1px solid var(--border); border-radius:10px;
+  padding:6px 11px; min-width:70px; }
+.gchip .k { font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-3); font-weight:650; }
+.gchip .v { font-size:15px; font-weight:650; color:var(--ink-1); font-variant-numeric:tabular-nums; margin-top:2px; }
+.cockrow > .gcard { margin-bottom:0; }
+</style>
+
+<div id="lock" class="card">
+  <div class="lc-logo" aria-label="Lower Cross">LOWER<br>CROSS</div>
+  <div id="lockform">
+    <h1>Vaultek Media Pulse</h1>
+    <p class="sub">Enter the team passphrase to unlock.</p>
+    <input id="pw" type="password" placeholder="Passphrase" autocomplete="current-password">
+    <div class="err" id="pwerr"></div>
+    <button id="unlock">Unlock</button>
+  </div>
+  <div id="lockload" style="display:none">
+    <h1>Vaultek Media Pulse</h1>
+    <p class="sub">Unlocking…</p>
+  </div>
+</div>
+<script>
+// saved-pass sessions show a loading state, never a password-form flash
+if (localStorage.getItem("vk_pass")) {
+  document.getElementById("lockform").style.display = "none";
+  document.getElementById("lockload").style.display = "block";
+}
+// apply saved theme before paint
+(function(){ var t = localStorage.getItem("vk_theme"); if (t) document.documentElement.setAttribute("data-theme", t); })();
+</script>
+
+<div id="app" class="wrap"></div>
+
+<script>
+"use strict";
+/* ============================ crypto ============================ */
+async function deriveKey(pass, salt, iter) {
+  const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey({name:"PBKDF2", salt, iterations:iter, hash:"SHA-256"}, km,
+    {name:"AES-GCM", length:256}, false, ["decrypt"]);
+}
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function decryptEnvelope(env, pass) {
+  const key = await deriveKey(pass, b64(env.salt), env.iter);
+  const pt = await crypto.subtle.decrypt({name:"AES-GCM", iv:b64(env.iv)}, key, b64(env.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+
+/* ============================ state + helpers ============================ */
+let DATA = null;
+const PAGE = "pacing";
+const NAV = [
+  {page:"cockpit", href:"index.html", label:"Cockpit"},
+  {page:"channels", href:"channels.html", label:"Channels"},
+  {page:"pacing", href:"pacing.html", label:"Pacing & trend"},
+];
+const PAGE_TITLE = {cockpit:"Daily cockpit", channels:"Channels & campaigns", pacing:"Pacing & trend"};
+
+const fm$ = v => v == null ? "–" : "$" + Math.round(v).toLocaleString("en-US");
+const fmK = v => v == null ? "–" : (Math.abs(v) >= 1000 ? "$" + (v/1000).toFixed(v>=100000?0:1) + "K" : fm$(v));
+const fmR = v => v == null ? "–" : v.toFixed(2) + "x";
+const fmPct = (v, dp=2) => v == null ? "–" : (v*100).toFixed(dp) + "%";
+const fmDpct = (v, dp=0) => v == null ? "–" : (v>=0?"+":"") + (v*100).toFixed(dp) + "%";
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+const SVG = "http://www.w3.org/2000/svg";
+function sv(tag, attrs) {
+  const n = document.createElementNS(SVG, tag);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  return n;
+}
+// signed delta pill (up = good unless invert)
+function deltaPill(cur, prev, {invert=false, pct=true, fmt=null} = {}) {
+  if (cur == null || prev == null || prev === 0) return null;
+  const d = pct ? (cur - prev) / Math.abs(prev) : (cur - prev);
+  const better = invert ? d < 0 : d > 0;
+  const cls = Math.abs(d) < (pct ? 0.005 : 0.001) ? "" : (better ? "up" : "down");
+  const arrow = d > 0 ? "▲" : (d < 0 ? "▼" : "");
+  const txt = fmt ? fmt(cur - prev) : ((d>=0?"+":"") + (pct ? (d*100).toFixed(1)+"%" : d.toFixed(2)));
+  const s = el("span", "delta " + cls);
+  s.textContent = arrow + " " + txt;
+  return s;
+}
+
+/* ============================ boot ============================ */
+async function tryUnlock(pass) {
+  const res = await fetch("data.enc", {cache:"no-store"});
+  if (!res.ok) throw new Error("data.enc not found");
+  DATA = await decryptEnvelope(JSON.parse(await res.text()), pass);
+}
+document.getElementById("unlock").addEventListener("click", go);
+document.getElementById("pw").addEventListener("keydown", e => { if (e.key === "Enter") go(); });
+async function go() {
+  const pass = document.getElementById("pw").value.trim();
+  if (!pass) return;
+  try {
+    await tryUnlock(pass);
+    localStorage.setItem("vk_pass", pass);
+    document.getElementById("lock").style.display = "none";
+    document.getElementById("app").style.display = "block";
+    render();
+  } catch (e) {
+    document.getElementById("pwerr").textContent = "Wrong passphrase (or data missing).";
+  }
+}
+let lastW = window.innerWidth;
+window.addEventListener("resize", () => {
+  if (!DATA || Math.abs(window.innerWidth - lastW) < 40) return;
+  lastW = window.innerWidth; render();
+});
+(async () => {
+  const saved = localStorage.getItem("vk_pass");
+  if (saved) {
+    try {
+      await tryUnlock(saved);
+      document.getElementById("lock").style.display = "none";
+      document.getElementById("app").style.display = "block";
+      render();
+    } catch (e) {
+      localStorage.removeItem("vk_pass");
+      document.getElementById("lockload").style.display = "none";
+      document.getElementById("lockform").style.display = "block";
+    }
+  }
+})();
+
+/* ============================ shell (sidebar + mobile drawer + theme) ============================ */
+const ICONS = {
+  cockpit:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13h8V3H3zM13 21h8V3h-8zM3 21h8v-6H3z"/></svg>',
+  channels:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>',
+  pacing:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>',
+};
+function mountShell() {
+  document.documentElement.classList.add("shell");
+  if (document.querySelector(".sidebar")) return;
+  const through = DATA.meta.data_through;
+  // mobile top bar
+  const mb = el("div", "mobilebar");
+  const hb = el("button", "hamb"); hb.setAttribute("aria-label","Menu"); hb.setAttribute("aria-expanded","false");
+  hb.append(el("span"), el("span"), el("span"));
+  hb.addEventListener("click", () => {
+    const open = document.documentElement.classList.toggle("nav-open");
+    hb.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  const wm = el("span", "wordmark"); wm.textContent = "LOWER CROSS";
+  const mc = el("span", "mb-client"); mc.textContent = DATA.meta.client;
+  mb.append(hb, wm, mc);
+  document.body.appendChild(mb);
+  // scrim
+  const scrim = el("div", "scrim");
+  scrim.addEventListener("click", () => {
+    document.documentElement.classList.remove("nav-open");
+    hb.setAttribute("aria-expanded","false");
+  });
+  document.body.appendChild(scrim);
+  // sidebar
+  const sb = el("aside", "sidebar");
+  const brand = el("div", "sb-brand");
+  const logo = el("div", "lc-logo"); logo.innerHTML = "LOWER<br>CROSS";
+  const h1 = el("h1"); h1.textContent = DATA.meta.client + " Media Pulse";
+  brand.append(logo, h1);
+  const nav = el("nav", "sb-nav");
+  NAV.forEach((n, i) => {
+    const a = el("a"); a.href = n.href; if (n.page === PAGE) a.className = "on";
+    a.style.setProperty("--i", i);
+    const ic = el("span", "nic"); ic.innerHTML = ICONS[n.page] || "";
+    a.append(ic, document.createTextNode(n.label));
+    nav.appendChild(a);
+  });
+  const foot = el("div", "sb-foot");
+  const dt = el("div"); dt.innerHTML = "Data through <b>" + through + "</b>";
+  const gr = el("div", "attr"); gr.textContent = "Shopify · Google Ads · Meta (sheet)";
+  // theme toggle
+  const tb = el("button", "ghost"); tb.textContent = "Theme: " + (localStorage.getItem("vk_theme") || "auto");
+  tb.addEventListener("click", () => {
+    const cur = localStorage.getItem("vk_theme") || "auto";
+    const next = cur === "auto" ? "light" : (cur === "light" ? "dark" : "auto");
+    if (next === "auto") { localStorage.removeItem("vk_theme"); document.documentElement.removeAttribute("data-theme"); }
+    else { localStorage.setItem("vk_theme", next); document.documentElement.setAttribute("data-theme", next); }
+    tb.textContent = "Theme: " + next;
+  });
+  foot.append(dt, gr, tb);
+  sb.append(brand, nav, foot);
+  document.body.appendChild(sb);
+}
+
+/* ============================ shared widgets ============================ */
+function verdictStrip() {
+  const v = DATA.verdict;
+  const strip = el("div", "topstrip");
+  const vd = el("div", "verdict v-" + v.level);
+  vd.append(el("span", "vdot"));
+  const wrap = el("div"); wrap.style.flex = "1";
+  const head = el("div");
+  const vh = el("span", "vh"); vh.textContent = v.headline + " ";
+  const vs = el("span", "vs"); vs.textContent = v.detail;
+  head.append(vh, vs);
+  const lever = el("div"); lever.style.marginTop = "6px";
+  const ls = el("span", "vs"); ls.innerHTML = "<b>Move:</b> " + v.lever;
+  lever.append(ls);
+  wrap.append(head, lever);
+  vd.append(wrap);
+  strip.append(vd);
+  return strip;
+}
+
+function pageHead(ctx) {
+  const h = el("div", "pagehead");
+  const t = el("div", "ptitle"); t.textContent = PAGE_TITLE[PAGE];
+  h.append(t);
+  if (ctx) { const c = el("div", "pctx"); c.textContent = ctx; h.append(c); }
+  return h;
+}
+
+// one big guardrail card (A/S or ROAS) with a gauge/marker
+function guardrailCard(kind) {
+  const g = DATA.guardrails;
+  const card = el("div", "card gcard");
+  const isAS = kind === "as";
+  const data = isAS ? g.as : g.roas;
+  const st = data.status === "bad" ? "st-bad" : (data.status === "warn" ? "st-warn" : "st-good");
+  card.classList.add(st);
+  const eb = el("div", "eyebrow"); eb.textContent = isAS ? "Governor" : "Allocator";
+  card.append(eb);
+  const lbl = el("div", "g-lbl");
+  lbl.textContent = isAS ? "Blended A/S — ad spend ÷ true revenue" : "Paid ROAS — platform revenue ÷ spend";
+  const val = el("div", "g-val");
+  val.textContent = isAS ? fmPct(data.value) : fmR(data.value);
+  const bound = el("div", "g-bound");
+  bound.textContent = isAS ? ("MTD · ceiling " + fmPct(data.ceiling, 1) + " (max)")
+                           : ("MTD · floor " + data.floor.toFixed(1) + "x (min)");
+  card.append(lbl, val, bound);
+  // gauge
+  const gauge = el("div", "ggauge");
+  const bar = el("div", "ggbar");
+  const fill = el("i");
+  let frac, markFrac;
+  if (isAS) {
+    const scaleMax = data.ceiling * 1.4;                 // 0 .. 13.3%
+    frac = Math.min(1, (data.value||0) / scaleMax);
+    markFrac = data.ceiling / scaleMax;
+  } else {
+    const scaleMax = Math.max(data.value||0, data.floor) * 1.6;
+    frac = Math.min(1, (data.value||0) / scaleMax);
+    markFrac = data.floor / scaleMax;
+  }
+  fill.style.width = (frac*100).toFixed(1) + "%";
+  fill.style.background = data.status === "bad" ? "var(--st-crit)" : (data.status === "warn" ? "var(--st-warn)" : "var(--st-good)");
+  const tick = el("span", "gtick"); tick.style.left = (markFrac*100).toFixed(1) + "%";
+  const tlab = el("span", "gticklab"); tlab.style.left = (markFrac*100).toFixed(1) + "%";
+  tlab.textContent = isAS ? "9.5% ceiling" : data.floor.toFixed(0)+"x floor";
+  bar.append(fill, tick);
+  gauge.append(bar, tlab);
+  card.append(gauge);
+  // context chips
+  const chips = el("div", "gchips");
+  if (isAS) {
+    chips.append(chip("L7", fmPct(g.as.l7)), chip("YTD", fmPct(DATA.ytd.as)),
+                 chip("Headroom", data.headroom_pct==null?"–":fmDpct(data.headroom_pct)));
+  } else {
+    chips.append(chip("Google", fmR(data.google)), chip("Meta", fmR(data.meta)),
+                 chip("L7", fmR(data.l7)));
+  }
+  card.append(chips);
+  return card;
+}
+function chip(k, v) {
+  const c = el("span", "gchip");
+  c.innerHTML = "<span class='k'>"+k+"</span><span class='v'>"+v+"</span>";
+  return c;
+}
+
+// Performance Summary strip (KPIs in one card)
+function summaryStrip() {
+  const w = DATA.windows, y = DATA.ytd, g = DATA.guardrails;
+  const wrap = el("div", "tiles");
+  const cells = [
+    {lbl:"Ad spend (MTD)", val:fm$(w.mtd.spend), cur:w.mtd.spend, prev:w.prev_mtd.spend, mfmt:fmK, invert:false, neutral:true},
+    {lbl:"True revenue (MTD)", val:fm$(w.mtd.rev_true), cur:w.mtd.rev_true, prev:w.prev_mtd.rev_true, mfmt:fmK},
+    {lbl:"Blended MER (MTD)", val:fmR(g.mer.value), cur:g.mer.value, prev:w.prev_mtd.mer, sub:"= 1 ÷ A/S"},
+    {lbl:"Paid ROAS (MTD)", val:fmR(w.mtd.roas), cur:w.mtd.roas, prev:w.prev_mtd.roas, sub:"platform-reported", st:g.roas.status},
+    {lbl:"Google ROAS", val:fmR(w.mtd.roas_g), cur:w.mtd.roas_g, prev:w.prev_mtd.roas_g},
+    {lbl:"Meta ROAS", val:fmR(w.mtd.roas_m), cur:w.mtd.roas_m, prev:w.prev_mtd.roas_m},
+  ];
+  cells.forEach(c => {
+    const t = el("div", "tile");
+    if (c.st) t.classList.add(c.st === "bad" ? "st-bad" : (c.st === "warn" ? "st-warn" : "st-good"));
+    const top = el("div", "tile-top");
+    const l = el("div", "lbl"); l.textContent = c.lbl;
+    top.append(l);
+    const dp = c.neutral ? null : deltaPill(c.cur, c.prev, {pct:true});
+    if (dp) top.append(dp);
+    t.append(top);
+    const v = el("div", "val"); v.textContent = c.val; t.append(v);
+    const b = el("div", "basis"); b.textContent = c.sub || "vs prev month, same days"; t.append(b);
+    wrap.append(t);
+  });
+  return wrap;
+}
+
+/* ============================ headroom chart (spend vs A/S) ============================ */
+function headroomChart() {
+  const all = DATA.daily.filter(d => d.as_r7 != null).slice(-90);
+  const box = el("div", "chartbox");
+  const appW = document.getElementById("app").clientWidth || 1000;
+  const W = Math.min(1160, Math.max(300, appW - 40));
+  const narrow = W < 520;
+  const H = narrow ? 210 : 250, padL = 46, padR = 52, padT = 16, padB = 26;
+  const plotH = H - padT - padB;
+  const svg = sv("svg", {width:"100%", height:H, viewBox:`0 0 ${W} ${H}`, style:"display:block"});
+  const n = all.length;
+  const x = i => padL + (n===1?0:i/(n-1)*(W-padL-padR));
+  const ceiling = DATA.meta.as_ceiling;
+  // left axis: spend (bars). right axis: A/S rolling.
+  const smax = Math.max(...all.map(d => d.spend)) * 1.15 || 1;
+  const asVals = all.map(d => d.as_r7).filter(v=>v!=null);
+  const amax = Math.max(ceiling*1.25, ...asVals) * 1.05;
+  const sy = v => padT + plotH - (v/smax)*plotH;
+  const ay = v => padT + plotH - (v/amax)*plotH;
+
+  // left gridline for spend
+  [Math.round(smax/2/1000)*1000].filter(v=>v>0).forEach(v=>{
+    svg.appendChild(sv("line",{x1:padL,x2:W-padR,y1:sy(v),y2:sy(v),stroke:"var(--grid)","stroke-width":1}));
+    const t = sv("text",{x:padL-6,y:sy(v)+4,"text-anchor":"end",fill:"var(--ink-3)","font-size":10.5});
+    t.textContent = "$"+(v/1000)+"K"; svg.appendChild(t);
+  });
+  // spend bars
+  const bw = Math.min(14, Math.max(2, (W-padL-padR)/n - 1.5));
+  all.forEach((d,i)=>{
+    const y0 = sy(0), y1 = sy(d.spend);
+    svg.appendChild(sv("rect",{x:x(i)-bw/2,y:y1,width:bw,height:Math.max(0,y0-y1),rx:2,
+      fill:"var(--bk-brand)",opacity:d.provisional?0.45:0.85}));
+  });
+  svg.appendChild(sv("line",{x1:padL,x2:W-padR,y1:sy(0),y2:sy(0),stroke:"var(--axis)","stroke-width":1}));
+  // A/S ceiling line (right axis)
+  svg.appendChild(sv("line",{x1:padL,x2:W-padR,y1:ay(ceiling),y2:ay(ceiling),stroke:"var(--st-crit)",
+    "stroke-width":1.5,"stroke-dasharray":"5,4"}));
+  const cl = sv("text",{x:padL+2,y:ay(ceiling)-5,"text-anchor":"start",fill:"var(--st-crit)","font-size":10.5,"font-weight":650});
+  cl.textContent = "A/S ceiling " + fmPct(ceiling,1); svg.appendChild(cl);
+  // right axis ticks
+  [ceiling/2, ceiling].forEach(v=>{
+    const t = sv("text",{x:W-padR+6,y:ay(v)+4,"text-anchor":"start",fill:"var(--ink-3)","font-size":10.5});
+    t.textContent = fmPct(v,1); svg.appendChild(t);
+  });
+  // A/S rolling-7 line
+  let dpath="", st=false;
+  all.forEach((d,i)=>{ const v=d.as_r7; if(v==null){st=false;return;}
+    dpath += (st?"L":"M")+x(i).toFixed(1)+","+ay(v).toFixed(1); st=true; });
+  svg.appendChild(sv("path",{d:dpath,fill:"none",stroke:"var(--s-meta)","stroke-width":2.5,"stroke-linecap":"round","stroke-linejoin":"round"}));
+  const lastI = n-1, lastV = all[lastI].as_r7;
+  svg.appendChild(sv("circle",{cx:x(lastI),cy:ay(lastV),r:4.5,fill:"var(--s-meta)",stroke:"var(--surface-1)","stroke-width":2}));
+  const lt = sv("text",{x:x(lastI)-8,y:ay(lastV)-9,"text-anchor":"end",fill:"var(--ink-1)","font-size":11.5,"font-weight":650});
+  lt.textContent = fmPct(lastV); svg.appendChild(lt);
+  // x labels
+  const step = Math.ceil(n/(narrow?5:9));
+  all.forEach((d,i)=>{ if(i%step!==0 && i!==n-1) return;
+    const t = sv("text",{x:x(i),y:H-6,"text-anchor":"middle",fill:"var(--ink-3)","font-size":10.5});
+    t.textContent = d.date.slice(5).replace("-","/"); svg.appendChild(t); });
+  box.appendChild(svg);
+  // legend + tooltip
+  const leg = el("div","legend");
+  const mk=(cls,color,label)=>{const s=el("span");const k=el("span",cls);k.style.background=color;s.append(k,document.createTextNode(label));return s;};
+  leg.append(mk("keyline thick","var(--s-meta)","A/S (7-day rolling)"));
+  leg.append(mk("keyline","var(--st-crit)","9.5% ceiling"));
+  leg.append(mk("key","var(--bk-brand)","Daily ad spend"));
+  const mw=el("span","muted");mw.textContent="faded = still settling";leg.append(mw);
+  box.append(leg);
+  // tooltip
+  const ch = el("div","crosshair"); ch.style.height=(padT+plotH)+"px"; box.append(ch);
+  const tt = el("div","tooltip"); box.append(tt);
+  svg.addEventListener("pointermove", ev=>{
+    const rect=svg.getBoundingClientRect(); const scale=W/rect.width; const px=(ev.clientX-rect.left)*scale;
+    let best=0,bd=1e9; for(let i=0;i<n;i++){const dd=Math.abs(x(i)-px);if(dd<bd){bd=dd;best=i;}}
+    const d=all[best]; ch.style.left=(x(best)/scale)+"px"; ch.style.display="block";
+    tt.replaceChildren(); tt.append(el("div","tt-date",d.date + (d.provisional?" · settling":"")));
+    const row=(color,label,val,line)=>{const r=el("div","row");const k=el("span","key");k.style.background=color;if(!line){k.style.height="8px";k.style.borderRadius="2px";}r.append(k,el("span",null,label),el("span","v",val));tt.append(r);};
+    row("var(--s-meta)","A/S 7d",fmPct(d.as_r7),true);
+    row("var(--st-crit)","Ceiling",fmPct(ceiling,1),true);
+    row("var(--bk-brand)","Spend (day)",fm$(d.spend));
+    row("var(--axis)","ROAS 7d",fmR(d.roas_r7));
+    tt.style.display="block"; const ttw=tt.offsetWidth; const lx=x(best)/scale;
+    tt.style.left=Math.min(Math.max(lx+12,0),rect.width-ttw-4)+"px"; tt.style.top="24px";
+    if(lx+12+ttw>rect.width) tt.style.left=(lx-ttw-12)+"px";
+  });
+  svg.addEventListener("pointerleave", ()=>{ch.style.display="none";tt.style.display="none";});
+  return box;
+}
+
+/* ============================ channel split donut ============================ */
+function channelSplit() {
+  const w = DATA.windows.l30;
+  const wid = el("div", "widget");
+  wid.append(headEl("Channel split", "Spend & platform ROAS · last 30 days"));
+  const rows = [
+    {name:"Google", spend:w.spend_g, roas:w.roas_g, color:"var(--s-google)"},
+    {name:"Meta", spend:w.spend_m, roas:w.roas_m, color:"var(--s-meta)"},
+  ];
+  const tot = rows.reduce((a,r)=>a+(r.spend||0),0) || 1;
+  const bar = el("div", "mixbar");
+  rows.forEach(r=>{ const d=el("div"); d.style.flex = (r.spend/tot); d.style.background=r.color; bar.append(d); });
+  wid.append(bar);
+  const leg = el("div", "mixlegend");
+  rows.forEach(r=>{
+    const row = el("div","row");
+    const sw = el("span","sw"); sw.style.background=r.color;
+    const nm = el("span"); nm.textContent = r.name + "  ·  " + fmR(r.roas);
+    const v = el("span","v"); v.textContent = fmK(r.spend) + " (" + Math.round(r.spend/tot*100) + "%)";
+    row.append(sw, nm, v); leg.append(row);
+  });
+  wid.append(leg);
+  return wid;
+}
+function headEl(title, sub) {
+  const h = el("div","chead");
+  const t = el("div","ct"); t.textContent = title; h.append(t);
+  if (sub){ const s = el("div","cs"); s.textContent = sub; h.append(s); }
+  return h;
+}
+
+/* ============================ data-health strip ============================ */
+function dataHealth() {
+  const card = el("div","card");
+  const strip = el("div","dhstrip");
+  const lab = el("span","dh-label"); lab.textContent = "Data health"; strip.append(lab);
+  DATA.integrity.sources.forEach(s=>{
+    const el2 = el("span","dh-src");
+    const dot = el("span","dh-dot"); dot.style.background = s.status==="ok"?"var(--st-good)":(s.status==="fallback"?"var(--st-warn)":"var(--st-crit)");
+    const t = el("span"); t.innerHTML = s.name + " <span class='muted'>· " + s.through + "</span>";
+    el2.append(dot, t); strip.append(el2);
+  });
+  card.append(strip);
+  return card;
+}
+
+/* ============================ channels page ============================ */
+function allocationCard() {
+  const a = DATA.channels.allocation;
+  const card = el("div","card");
+  card.append(headEl("Where the next dollar goes", "Marginal-ROAS allocation · gated by the A/S ceiling"));
+  const tk = el("div","takeaway " + (DATA.guardrails.as.status==="good"?"tk-good":"tk-warn"));
+  tk.textContent = a.reason;
+  card.append(tk);
+  const row = el("div","gchips");
+  row.append(chip("Google ROAS", fmR(a.google_roas)), chip("Meta ROAS", fmR(a.meta_roas)),
+            chip("A/S status", DATA.guardrails.as.status.toUpperCase()));
+  card.append(row);
+  return card;
+}
+const CALL_BADGE = {
+  scale:["b-scale","Scale ↑"], hold:["b-goal","Hold"], watch:["b-watch","Watch"], cut:["b-fix","Cut / fix"],
+};
+function googleTable() {
+  const c = DATA.channels.google;
+  const card = el("div","card");
+  card.append(headEl("Google campaigns", "Live · last 30 days · platform-reported ROAS (directional)"));
+  const acct = c.account;
+  const sub = el("div","sub"); sub.style.marginBottom = "8px";
+  sub.textContent = "Account: " + fm$(acct.spend) + " spend · " + fmR(acct.roas) + " ROAS";
+  card.append(sub);
+  const wrap = el("div","tscroll");
+  const tbl = el("table");
+  const thead = el("thead"); const htr = el("tr");
+  ["Campaign","Type","Spend","ROAS","Δ vs prior","Clicks","CPC","Call"].forEach((h,i)=>{
+    const th = el("th", i===0?"":"num"); th.textContent = h; htr.append(th);
+  });
+  thead.append(htr); tbl.append(thead);
+  const tb = el("tbody");
+  const accRoas = acct.roas || 1;
+  c.campaigns.forEach(cp=>{
+    const tr = el("tr");
+    const nm = el("td","name"); nm.textContent = cp.name; tr.append(nm);
+    const ty = el("td"); ty.style.textAlign="left"; ty.textContent = prettyType(cp.channel_type); tr.append(ty);
+    tr.append(td(fm$(cp.spend)));
+    // roas cell with bar
+    const rc = el("td","num roascell");
+    rc.append(document.createTextNode(fmR(cp.roas)));
+    const bar = el("span","roasbar"); const bi = el("i");
+    bi.style.width = Math.min(100, cp.roas/(accRoas*1.6)*100) + "%";
+    bi.style.background = cp.call==="cut"?"var(--st-crit)":(cp.call==="scale"?"var(--st-good)":"var(--s-google)");
+    bar.append(bi); rc.append(bar); tr.append(rc);
+    // delta
+    const dcell = el("td","num");
+    if (cp.droas!=null){ const dp = el("span", "delta " + (cp.droas>=0?"up":"down")); dp.textContent = (cp.droas>=0?"▲ +":"▼ ")+cp.droas.toFixed(1); dcell.append(dp);} else dcell.textContent="–";
+    tr.append(dcell);
+    tr.append(td(cp.clicks.toLocaleString()));
+    tr.append(td(cp.cpc==null?"–":"$"+cp.cpc.toFixed(2)));
+    const bc = el("td","num");
+    const [bcls,blab] = CALL_BADGE[cp.call] || ["b-na",cp.call];
+    const bg = el("span","badge "+bcls); bg.append(el("span","dot"), document.createTextNode(blab));
+    bc.append(bg); tr.append(bc);
+    tb.append(tr);
+  });
+  tbl.append(tb); wrap.append(tbl); card.append(wrap);
+  const note = el("div","maturity-note");
+  note.textContent = "Every scale call is gated by the blended A/S staying under 9.5% — platform ROAS ranks campaigns, it does not authorize spend.";
+  card.append(note);
+  return card;
+}
+function td(txt){ const c = el("td","num"); c.textContent = txt; return c; }
+function prettyType(t){ return ({SEARCH:"Search",SHOPPING:"Shopping",PERFORMANCE_MAX:"PMax",DISPLAY:"Display",VIDEO:"Video",DEMAND_GEN:"Demand Gen"})[t] || (t||"–"); }
+
+function metaCard() {
+  const m = DATA.channels.meta;
+  const card = el("div","card");
+  card.append(headEl("Meta (account-level)", "From the sheet's FunnelMeta tab"));
+  const strip = el("div","tiles"); strip.style.marginBottom="0";
+  [["Spend (L30)", fm$(m.account.spend)],["Platform revenue", fm$(m.account.conv_value)],["ROAS", fmR(m.account.roas)]].forEach(([l,v])=>{
+    const t = el("div","tile"); const top=el("div","tile-top"); const ll=el("div","lbl"); ll.textContent=l; top.append(ll); t.append(top);
+    const vv=el("div","val"); vv.textContent=v; t.append(vv); strip.append(t);
+  });
+  card.append(strip);
+  const note = el("div","maturity-note"); note.textContent = m.note; card.append(note);
+  return card;
+}
+
+/* ============================ pacing page ============================ */
+function monthlyTable() {
+  const card = el("div","card");
+  card.append(headEl("Monthly performance", "Reconciles to the Vaultek Sales Tracker · A/S ceiling 9.5%"));
+  const wrap = el("div","tscroll"); const tbl = el("table");
+  const thead=el("thead"); const htr=el("tr");
+  ["Month","Ad spend","True revenue","A/S","Paid ROAS","YoY vs 2025"].forEach((h,i)=>{const th=el("th",i===0?"":"num");th.textContent=h;htr.append(th);});
+  thead.append(htr); tbl.append(thead);
+  const tb=el("tbody");
+  DATA.monthly.forEach(m=>{
+    const tr=el("tr");
+    const nm=el("td","name"); nm.textContent=m.month; tr.append(nm);
+    tr.append(td(fm$(m.spend)));
+    tr.append(td(fm$(m.rev_true)));
+    // A/S cell colored vs ceiling
+    const ac=el("td","num roascell"); ac.textContent=fmPct(m.as);
+    ac.style.color = m.as>DATA.meta.as_ceiling?"var(--st-crit)":(m.as>=0.09?"var(--st-warn)":"var(--st-good)");
+    tr.append(ac);
+    tr.append(td(fmR(m.roas)));
+    const yc=el("td","num");
+    if(m.yoy_pct!=null){const dp=el("span","delta "+(m.yoy_pct>=0?"up":"down"));dp.textContent=(m.yoy_pct>=0?"▲ ":"▼ ")+fmDpct(m.yoy_pct);yc.append(dp);} else yc.textContent="–";
+    tr.append(yc);
+    tb.append(tr);
+  });
+  // YTD row
+  const y=DATA.ytd; const tr=el("tr"); tr.style.borderTop="2px solid var(--border)";
+  const nm=el("td","name"); nm.innerHTML="<b>YTD</b>"; tr.append(nm);
+  tr.append(td(fm$(y.spend))); tr.append(td(fm$(y.rev_true)));
+  const ac=el("td","num roascell"); ac.textContent=fmPct(y.as);
+  ac.style.color = y.as>DATA.meta.as_ceiling?"var(--st-crit)":(y.as>=0.09?"var(--st-warn)":"var(--st-good)"); tr.append(ac);
+  tr.append(td(fmR(y.roas)));
+  const yc=el("td","num");
+  const dp=el("span","delta "+(y.yoy_pct>=0?"up":"down"));dp.textContent=(y.yoy_pct>=0?"▲ ":"▼ ")+fmDpct(y.yoy_pct);yc.append(dp);tr.append(yc);
+  tb.append(tr);
+  tbl.append(tb); wrap.append(tbl); card.append(wrap);
+  const note=el("div","maturity-note");
+  note.textContent = "YoY compares complete months only (through "+y.yoy_through+"): "+fm$(y.yoy_current)+" vs "+fm$(y.yoy_prior)+" prior year = "+fmDpct(y.yoy_pct)+" ("+fm$(y.yoy_abs)+").";
+  card.append(note);
+  return card;
+}
+
+// monthly A/S line vs ceiling
+function asTrendChart() {
+  const m = DATA.monthly;
+  const card = el("div","card");
+  card.append(headEl("Blended A/S over time", "The efficiency discipline — has it held under 9.5%?"));
+  const box = el("div","chartbox");
+  const appW = document.getElementById("app").clientWidth || 1000;
+  const W = Math.min(1120, Math.max(300, appW-40)); const H=190, padL=44,padR=16,padT=16,padB=26;
+  const plotH=H-padT-padB;
+  const svg=sv("svg",{width:"100%",height:H,viewBox:`0 0 ${W} ${H}`,style:"display:block"});
+  const ceiling=DATA.meta.as_ceiling;
+  const vals=m.map(x=>x.as);
+  const amax=Math.max(ceiling*1.25,...vals)*1.05; const amin=Math.min(...vals,ceiling*0.8)*0.9;
+  const n=m.length; const x=i=>padL+(n===1?0:i/(n-1)*(W-padL-padR));
+  const y=v=>padT+plotH-((v-amin)/(amax-amin))*plotH;
+  // ceiling
+  svg.appendChild(sv("line",{x1:padL,x2:W-padR,y1:y(ceiling),y2:y(ceiling),stroke:"var(--st-crit)","stroke-width":1.5,"stroke-dasharray":"5,4"}));
+  const cl=sv("text",{x:padL+2,y:y(ceiling)-5,"text-anchor":"start",fill:"var(--st-crit)","font-size":10.5,"font-weight":650});
+  cl.textContent="9.5% ceiling"; svg.appendChild(cl);
+  // 9% warn
+  svg.appendChild(sv("line",{x1:padL,x2:W-padR,y1:y(0.09),y2:y(0.09),stroke:"var(--grid)","stroke-width":1}));
+  // line
+  let d="",st=false;
+  m.forEach((mm,i)=>{d+=(st?"L":"M")+x(i).toFixed(1)+","+y(mm.as).toFixed(1);st=true;});
+  svg.appendChild(sv("path",{d,fill:"none",stroke:"var(--s-meta)","stroke-width":2.5,"stroke-linecap":"round","stroke-linejoin":"round"}));
+  m.forEach((mm,i)=>{
+    const col = mm.as>ceiling?"var(--st-crit)":(mm.as>=0.09?"var(--st-warn)":"var(--st-good)");
+    svg.appendChild(sv("circle",{cx:x(i),cy:y(mm.as),r:4,fill:col,stroke:"var(--surface-1)","stroke-width":1.5}));
+    const t=sv("text",{x:x(i),y:y(mm.as)-9,"text-anchor":"middle",fill:"var(--ink-2)","font-size":10,"font-weight":600});
+    t.textContent=fmPct(mm.as,1); svg.appendChild(t);
+    const xl=sv("text",{x:x(i),y:H-6,"text-anchor":"middle",fill:"var(--ink-3)","font-size":10.5});
+    xl.textContent=mm.month; svg.appendChild(xl);
+  });
+  box.append(svg); card.append(box);
+  return card;
+}
+
+function methodologyCard() {
+  const card = el("div","card");
+  card.append(headEl("How to read this", "Measurement model & data sources"));
+  const ul = el("ul","insights");
+  DATA.notes.forEach(t=>{ const li=el("li","sev-info"); li.textContent=t; ul.append(li); });
+  card.append(ul);
+  // integrity table
+  const it = el("div","integ"); it.style.marginTop="16px";
+  const tbl=el("table"); const thead=el("thead");const htr=el("tr");
+  ["Source","Grain","Through","Status"].forEach(h=>{const th=el("th");th.textContent=h;htr.append(th);});
+  thead.append(htr);tbl.append(thead);const tb=el("tbody");
+  DATA.integrity.sources.forEach(s=>{
+    const tr=el("tr");
+    const a=el("td");a.textContent=s.name;const b=el("td");b.textContent=s.grain;const c=el("td");c.textContent=s.through;
+    const d=el("td");const ch=el("span","ichip "+(s.status==="ok"?"ok":(s.status==="fallback"?"cache":"bad")));ch.textContent=s.status;d.append(ch);
+    tr.append(a,b,c,d);tb.append(tr);
+  });
+  tbl.append(tb);it.append(tbl);card.append(it);
+  const rec=el("div","maturity-note");rec.textContent=DATA.integrity.reconciles;card.append(rec);
+  return card;
+}
+
+function contextCard() {
+  if (!DATA.context || !DATA.context.length) return null;
+  const card = el("div","card");
+  card.append(headEl("What's in flight", ""));
+  const ul = el("ul","insights ctx");
+  DATA.context.forEach(c=>{ const li=el("li"); const d=el("span","d"); d.textContent=c.date; li.append(d, document.createTextNode(c.text)); ul.append(li); });
+  card.append(ul);
+  return card;
+}
+
+/* ============================ render ============================ */
+function render() {
+  mountShell();
+  const app = document.getElementById("app");
+  app.replaceChildren();
+  const through = DATA.meta.data_through;
+
+  if (PAGE === "cockpit") {
+    app.append(verdictStrip());
+    app.append(pageHead("Data through " + through));
+    const grid = el("div","cockrow");
+    grid.append(guardrailCard("as"), guardrailCard("roas"));
+    app.append(grid);
+    app.append(summaryStrip());
+    // headroom chart
+    const hc = el("div","card");
+    hc.append(headEl("Spend vs efficiency", "Can we buy more revenue without breaching the 9.5% A/S ceiling? · last 90 days"));
+    hc.append(headroomChart());
+    app.append(hc);
+    // channel split
+    const wr = el("div","wrow");
+    wr.append(channelSplit());
+    app.append(wr);
+    app.append(dataHealth());
+  }
+
+  if (PAGE === "channels") {
+    app.append(pageHead("Last 30 days · through " + through));
+    app.append(allocationCard());
+    app.append(googleTable());
+    app.append(metaCard());
+  }
+
+  if (PAGE === "pacing") {
+    app.append(pageHead("Through " + through));
+    app.append(monthlyTable());
+    app.append(asTrendChart());
+    const ctx = contextCard(); if (ctx) app.append(ctx);
+    app.append(methodologyCard());
+  }
+
+  const f = el("footer");
+  f.innerHTML = "Vaultek Media Pulse · generated " + DATA.meta.generated_at +
+    " · revenue = Shopify Total Sales (incl. affiliate) · spend = ad platforms · no MTA, blended efficiency governs. Platform ROAS is directional.";
+  app.append(f);
+}
+</script>
+</body>
+</html>

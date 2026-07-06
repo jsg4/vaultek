@@ -1,0 +1,35 @@
+# Belongs in the PUBLIC site repo (jsg4/vaultek) at .github/workflows/deploy.yml.
+# Publishes the static site to GitHub Pages on every push. Free-plan Pages
+# workaround: the public repo holds only generated HTML + encrypted data.enc.
+name: Deploy Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment, but NEVER cancel an in-progress Pages deploy —
+# cancelling mid-flight wedges the Pages backend and causes "Deployment failed,
+# try again later" (this is GitHub's official Pages-template setting).
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+      - id: deployment
+        uses: actions/deploy-pages@v4
